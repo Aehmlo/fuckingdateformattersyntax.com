@@ -1,7 +1,16 @@
 <html>
 	<head>
-		<title>How Do I Format a Date in Swift?</title>
+		<title>How Do I Format a Date in Cocoa?</title>
 		<style>
+			.disclaimer{
+				line-height: 2em;
+			}
+
+			a{
+				color: #0088D9;
+				text-decoration: none;
+			}
+
 			body{
 				background-color: #002b36;
 				color: #839496;
@@ -11,34 +20,17 @@
 				padding-bottom: 0;
 			}
 
-			strong{
-				color: #268bd2;
+			#content {
+				columns:60px 3;
+				-webkit-columns:60px 3;
+				-moz-columns:60px 3;
 			}
 
-			h1{
-				font-size: 40px;
-				margin-bottom: 1.5em;
-				text-align: center;
-			}
-
-			h2{
-				font-weight: normal;
-			}
-
-			.return{
-				color: #2aa198;
-			}
-
-			.name{
-				color: #7C9F00;
-			}
-
-			.format-string{
-				color: #BC8800;
-			}
-
-			.disclaimer{
-				line-height: 2em;
+			code:before{
+				content: '"';
+				padding: 0;
+				margin: 0;
+				color: #839496;
 			}
 
 			code{
@@ -49,12 +41,7 @@
 				padding: 0;
 				color: #BC8800;
 			}
-			code:before{
-				content: '"';
-				padding: 0;
-				margin: 0;
-				color: #839496;
-			}
+
 			code:after{
 				content: '"';
 				padding: 0;
@@ -62,78 +49,87 @@
 				color: #839496;
 			}
 
+			#fixmargin{
+				margin-top: -25px;
+			}
+
 			footer{
 				font-size: 12px;
-				margin-top: 200px;
 				opacity: 0.4;
 				text-align: right;
+				padding-top: 30px;
 			}
 
-			a{
-				color: #0088D9;
-				text-decoration: none;
+			h1{
+				font-size: 40px;
+				margin-bottom: 1.5em;
+				text-align: center;
 			}
 
-		</style>
-		<style media='print'>
-			body {
-				background-color: #FFFFFF;
-				font-size: 16px;
-				padding: 20px;
-			}
-
-			h1 {
-				font-size: 28px;
-				margin-bottom: 1em;
-			}
-
-			code {
-				font-size: 16px;
-				margin-bottom: 2em;
-				margin-left: 20px;
-			}
-
-			footer {
-				font-size: 10px;
-				margin-top: 40px;
+			h2{
+				font-weight: normal;
+				text-align: left;
 			}
 		</style>
-
-		<!--link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
-		<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
-		<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
-		<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
-		<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
-		<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
-		<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
-		<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
-		<link rel="icon" type="image/png" href="/favicon-196x196.png" sizes="196x196">
-		<link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160">
-		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
-		<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-		<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32"-->
-		</head>
+	</head>
 
 	<body>
-	<h1>How Do I Format a Date in Swift?</h1>
+		<h1>How Do I Format a Date in Swift?</h1>
 
-	<div>
-		<h2>Hour:</h2>
-		<code>HH</code>
-	</div>
+		<div id="content">
+			<div id="fixmargin">
+				<h2>Year:</h2>
+				<code>yyyy</code>
+			</div>
 
-	<div>
-		<h2>Minute:</h2>
-		<code>mm</code>
-	</div>
+			<div>
+				<h2>Month:</h2>
+				<code>MMMMM</code>
+			</div>
 
-	<div class='disclaimer'>This site is not intended to be an exhaustive list of all possible formatting instances.</br>
-	If you find yourself needing syntax not listed here, please check the <a href="https://developer.apple.com/library/ios/documentation/cocoa/Conceptual/DataFormatting/Articles/dfDateFormatting10_4.html#//apple_ref/doc/uid/TP40002369-SW1">date formatting guide</a>.
+			<div>
+				<h2>Week:</h2>
+				<code>ww</code>
+			</div>
 
-	</br></br>
-	<!--Unable to access this site due to the profanity in the URL? <strong><a href="http://goshdarnblocksyntax.com">http://goshdarndateformattersyntax.com</a></strong> is a more work-friendly mirror.-->
-	</div>
+			<div>
+				<h2>Day of Year:</h2>
+				<code>DDD</code>
+			</div>
 
-	<footer>By <a href="http://aehmlo.com">Aehmlo Lxaitn</a>, inspired by <a href="http://adam.hbang.ws">Adam</a>. Domain courtesy of <a href="http://haifisch.ninja">Haifisch</a></footer>
+			<div>
+				<h2>Day of Month:</h2>
+				<code>dd</code>
+			</div>
+
+			<div>
+				<h2>Day of Week:</h2>
+				<code>EEEEEE</code>
+			</div>
+
+			<div>
+				<h2>Hour:</h2>
+				<code>HH</code>
+			</div>
+
+			<div>
+				<h2>Minute:</h2>
+				<code>mm</code>
+			</div>
+
+			<div>
+				<h2>Second:</h2>
+				<code>ss</code>
+			</div>
+		</div>
+
+		<div class='disclaimer'>
+		This site is not intended to be an exhaustive list of all possible formatting instances.</br>
+		If you find yourself needing syntax not listed here, please check the <a href="https://developer.apple.com/library/ios/documentation/cocoa/Conceptual/DataFormatting/Articles/dfDateFormatting10_4.html#//apple_ref/doc/uid/TP40002369-SW1">date formatting guide</a>.
+		</div>
+
+		<footer>
+		By <a href="http://aehmlo.com">Aehmlo Lxaitn</a> and <a href="http://insanj.com">insanj</a>, inspired by <a href="http://adam.hbang.ws">Adam</a>. Domain courtesy of <a href="http://haifisch.ninja">Haifisch</a>.
+		</footer>
 	</body>
 </html>
