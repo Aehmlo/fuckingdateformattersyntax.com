@@ -103,6 +103,15 @@ code.swift:before{
 	color: rgba(75, 138, 251, 1);
 	font-size: 0.3em;
 }
+code .property{
+	color: rgba(111, 65, 167, 1);
+}
+code .string{
+	color: rgba(249, 38, 114, 1);
+}
+code .variable{
+	color: rgba(184, 51, 161, 1);
+}
 footer{
 	opacity: 0.4;
 	text-align: right;
