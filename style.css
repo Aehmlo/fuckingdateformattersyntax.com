@@ -68,6 +68,11 @@ div.content-block{
 	vertical-align: top;
 	padding: 0 7.5px 5px 7.5px;
 }
+@media only screen and (max-width: 700px){
+	div.content-block{
+		width: 100%;
+	}
+}
 body.objc code.objc, body.swift code.swift, body.both code{
 	display: block;
 	visibility: visible;
