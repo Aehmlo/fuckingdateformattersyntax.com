@@ -1,135 +1,204 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>How Do I Format a Date in Cocoa?</title>
-		<style>
-			.disclaimer{
-				line-height: 2em;
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<meta charset="utf-8" />
+		<script type="text/javascript">
+		var setLanguage = function(language){
+			document.getElementsByTagName("body")[0].className = language
+			var labels = document.getElementsByTagName("label");
+			for(var i = 0; i<labels.length; i++){
+				labels[i].className = (labels[i].getAttribute("for") == language) ? "selected" : "";
 			}
-
-			a{
-				color: #0088D9;
-				text-decoration: none;
-			}
-
-			body{
-				background-color: #002b36;
-				color: #839496;
-				font-family: Lucida Grande, sans-serif;
-				font-size: 20px;
-				padding: 40px;
-				padding-bottom: 0;
-			}
-
-			#content {
-				columns:60px 3;
-				-webkit-columns:60px 3;
-				-moz-columns:60px 3;
-			}
-
-			code:before{
-				content: '"';
-				padding: 0;
-				margin: 0;
-				color: #839496;
-			}
-
-			code{
-				display: block;
-				font-family: Monaco, Menlo;
-				font-size: 20px;
-				margin: 1.5em 0 3em 40px;
-				padding: 0;
-				color: #BC8800;
-			}
-
-			code:after{
-				content: '"';
-				padding: 0;
-				margin: 0;
-				color: #839496;
-			}
-
-			#fixmargin{
-				margin-top: -25px;
-			}
-
-			footer{
-				font-size: 12px;
-				opacity: 0.4;
-				text-align: right;
-				padding-top: 30px;
-			}
-
-			h1{
-				font-size: 40px;
-				margin-bottom: 1.5em;
-				text-align: center;
-			}
-
-			h2{
-				font-weight: normal;
-				text-align: left;
-			}
-		</style>
+		}
+		</script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 	</head>
-
-	<body>
-		<h1>How Do I Format a Date in Swift?</h1>
-
-		<div id="content">
-			<div id="fixmargin">
-				<h2>Year:</h2>
-				<code>yyyy</code>
+	<body class="both">
+		<menu type="toolbar">
+			<menuitem id="language">
+				<span>Language:</span>
+				<input id="swift" type="radio" name="li" value="Swift" onclick="setLanguage('swift')" />
+				<label for="swift">Swift</label>
+				<input id="objc" type="radio" name="li" value="Objective-C" onclick="setLanguage('objc')" />
+				<label for="objc">Objective-C</label>
+				<input id="both" type="radio" name="li" value="Both" />
+				<label for="both" class="selected" onclick="setLanguage('both')">Both</label>
+			</menuitem>
+		</menu>
+		<h1 id="doc-name">Date Formatting in Cocoa</h1>
+		<div id="actual-content">
+			<h2>Common Format Strings</h2>
+			<div class="content-row">
+				<div class="content-block">
+					<h3>Year (full)</h3>
+					<code class="objc">yearFormatter.dateFormat = @"y";</code>
+					<code class="swift">yearFormatter.dateFormat = "y"</code>
+				</div>
+				<div class="content-block">
+					<h3>Year (two digits, leading zero if less than ten)</h3>
+					<code class="objc">yearFormatter.dateFormat = @"yy";</code>
+					<code class="swift">yearFormatter.dateFormat = "yy"</code>
+				</div>
+				<div class="content-block">
+					<h3>Quarter (abbreviated)</h3>
+					<code class="objc">quarterFormatter.dateFormat = @"qqq";</code>
+					<code class="swift">quarterFormatter.dateFormat = "qqq"</code>
+				</div>
 			</div>
-
-			<div>
-				<h2>Month:</h2>
-				<code>MMMMM</code>
+			<div class="content-row">
+				<div class="content-block">
+					<h3>Month (two digits, leading zero where applicable)</h3>
+					<code class="objc">monthFormatter.dateFormat = @"MM";</code>
+					<code class="swift">monthFormatter.dateFormat = "MM"</code>
+				</div>
+				<div class="content-block">
+					<h3>Month (abbreviated)</h3>
+					<code class="objc">monthFormatter.dateFormat = @"MMM";</code>
+					<code class="swift">monthFormatter.dateFormat = "MMM"</code>
+				</div>
+				<div class="content-block">
+					<h3>Month (full)</h3>
+					<code class="objc">monthFormatter.dateFormat = @"MMMM";</code>
+					<code class="swift">monthFormatter.dateFormat = "MMMM"</code>
+				</div>
 			</div>
-
-			<div>
-				<h2>Week:</h2>
-				<code>ww</code>
+			<div class="content-row">
+				<div class="content-block">
+					<h3>Day of Month (no leading zero)</h3>
+					<code class="objc">dateFormatter.dateFormat = @"d";</code>
+					<code class="swift">dateFormatter.dateFormat = "d"</code>
+				</div>
+				<div class="content-block">
+					<h3>Day of Week (abbreviated)</h3>
+					<code class="objc">weekDayFormatter.dateFormat = @"EEE";</code>
+					<code class="swift">weekDayFormatter.dateFormat = "EEE"</code>
+				</div>
+				<div class="content-block">
+					<h3>Day of Week (full)</h3>
+					<code class="objc">weekDayFormatter.dateFormat = @"EEEE";</code>
+					<code class="swift">weekDayFormatter.dateFormat = "EEEE"</code>
+				</div>
 			</div>
-
-			<div>
-				<h2>Day of Year:</h2>
-				<code>DDD</code>
+			<div class="content-row">
+				<div class="content-block">
+					<h3>Day of Week (short)</h3>
+					<code class="objc">weekDayFormatter.dateFormat = @"EEEEEE";</code>
+					<code class="swift">weekDayFormatter.dateFormat = "EEEEEE"</code>
+				</div>
+				<div class="content-block">
+					<h3>Period (AM/PM)</h3>
+					<code class="objc">periodFormatter.dateFormat = @"a";</code>
+					<code class="swift">periodFormatter.dateFormat = "a"</code>
+				</div>
+				<div class="content-block">
+					<h3>Hour (0-12, zero-padded)</h3>
+					<code class="objc">hourFormatter.dateFormat = @"hh";</code>
+					<code class="swift">hourFormatter.dateFormat = "hh"</code>
+				</div>
 			</div>
-
-			<div>
-				<h2>Day of Month:</h2>
-				<code>dd</code>
+			<div class="content-row">
+				<div class="content-block">
+					<h3>Hour (0-12, not zero-padded)</h3>
+					<code class="objc">hourFormatter.dateFormat = @"h";</code>
+					<code class="swift">hourFormatter.dateFormat = "h"</code>
+				</div>
+				<div class="content-block">
+					<h3>Hour (0-23, zero-padded)</h3>
+					<code class="objc">hourFormatter.dateFormat = @"HH";</code>
+					<code class="swift">hourFormatter.dateFormat = "HH"</code>
+				</div>
+				<div class="content-block">
+					<h3>Hour (0-23, not zero-padded)</h3>
+					<code class="objc">hourFormatter.dateFormat = @"H";</code>
+					<code class="swift">hourFormatter.dateFormat = "H"</code>
+				</div>
 			</div>
-
-			<div>
-				<h2>Day of Week:</h2>
-				<code>EEEEEE</code>
+			<div class="content-row">
+				<div class="content-block">
+					<h3>Minute (zero-padded)</h3>
+					<code class="objc">minuteFormatter.dateFormat = @"mm";</code>
+					<code class="swift">minuteFormatter.dateFormat = "mm"</code>
+				</div>
+				<div class="content-block">
+					<h3>Second (zero-padded)</h3>
+					<code class="objc">secondFormatter.dateFormat = @"ss";</code>
+					<code class="swift">secondFormatter.dateFormat = "ss"</code>
+				</div>
 			</div>
-
-			<div>
-				<h2>Hour:</h2>
-				<code>HH</code>
+			<h2>Time Zones</h2>
+			<div class="content-row">
+				<div class="content-block">
+					<h3>Specific Non-Location Format (Short, ex. "PDT")</h3>
+					<code class="objc">zoneFormatter.dateFormat = @"zzz";</code>
+					<code class="swift">zoneFormatter.dateFormat = "zzz"</code>
+				</div>
+				<div class="content-block">
+					<h3>Specific Non-Location Format (Long, ex. "Pacific Daylight Time")</h3>
+					<code class="objc">zoneFormatter.dateFormat = @"zzzz";</code>
+					<code class="swift">zoneFormatter.dateFormat = "zzzz"</code>
+				</div>
+				<div class="content-block">
+					<h3>Localized GMT Format (Long, ex. "GMT-6:00")</h3>
+					<code class="objc">zoneFormatter.dateFormat = @"ZZZZ";</code>
+					<code class="swift">zoneFormatter.dateFormat = "ZZZZ"</code>
+				</div>
 			</div>
-
-			<div>
-				<h2>Minute:</h2>
-				<code>mm</code>
+			<div class="content-row">
+				<div class="content-block">
+					<h3>Generic Non-Location Format (Short, ex. "PT")</h3>
+					<code class="objc">zoneFormatter.dateFormat = @"v";</code>
+					<code class="swift">zoneFormatter.dateFormat = "v"</code>
+				</div>
+				<div class="content-block">
+					<h3>Generic Non-Location Format (Long, ex. "Pacific Time")</h3>
+					<code class="objc">zoneFormatter.dateFormat = @"vvvv";</code>
+					<code class="swift">zoneFormatter.dateFormat = "vvvv"</code>
+				</div>
+				<div class="content-block">
+					<h3>Exemplar City Name (ex. "Chicago")</h3>
+					<code class="objc">zoneFormatter.dateFormat = @"VVV";</code>
+					<code class="swift">zoneFormatter.dateFormat = "VVV"</code>
+				</div>
 			</div>
-
-			<div>
-				<h2>Second:</h2>
-				<code>ss</code>
+			<h2>Other Goodies</h2>
+			<div class="content-row">
+				<div class="content-block">
+					<h3>en_US_POSIX Locale (prevents user settings from changing format string)</h3>
+					<code class="objc">dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];</code>
+					<code class="swift">dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")</code>
+				</div>
+				<div class="content-block">
+					<h3>ISO 8601 Date</h3>
+					<code class="objc">dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
+					dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
+					</code>
+					<code class="swift">dateFormatter.timeZone = NSTimeZone(abbreviation: "UTC")
+					dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+					</code>
+				</div>
+				<div class="content-block">
+					<h3>GMT Date</h3>
+					<code class="objc">dateFormatter.dateFormat = @"eee, dd MMM yyyy HH:mm:ss zzz";</code>
+					<code class="swift">dateFormatter.dateFormat = "eee, dd MMM yyyy HH:mm:ss zzz"</code>
+				</div>
+			</div>
+			<div class="content-row">
+				<div class="content-block">
+					<h3>Twitter API Date</h3>
+					<code class="objc">dateFormatter.dateFormat = @"eee MMM dd HH:mm:ss ZZZZ yyyy";</code>
+					<code class="swift">dateFormatter.dateFormat = "eee MMM dd HH:mm:ss ZZZZ yyyy"</code>
+				</div>
+			</div>
+			<h2>Not Listed?</h2>
+			<div style="padding-left: 25px;">
+				This site is not intended to be an exhaustive list of all possible formatting instances.</br>
+				If you find yourself needing syntax not listed here, please check Apple's <a href="https://developer.apple.com/library/ios/documentation/cocoa/Conceptual/DataFormatting/Articles/dfDateFormatting10_4.html#//apple_ref/doc/uid/TP40002369-SW1">date formatting guide</a> or <a href="http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Field_Symbol_Table">the table made just for this</a>.
 			</div>
 		</div>
-
-		<div class='disclaimer'>
-		This site is not intended to be an exhaustive list of all possible formatting instances.</br>
-		If you find yourself needing syntax not listed here, please check the <a href="https://developer.apple.com/library/ios/documentation/cocoa/Conceptual/DataFormatting/Articles/dfDateFormatting10_4.html#//apple_ref/doc/uid/TP40002369-SW1">date formatting guide</a>.
-		</div>
-
+		<br />
 		<footer>
-		By <a href="http://aehmlo.com">Aehmlo Lxaitn</a> and <a href="http://insanj.com">insanj</a>, inspired by <a href="http://adam.hbang.ws">Adam</a>. Domain courtesy of <a href="http://haifisch.ninja">Haifisch</a>.
-		</footer>
+		By <a href="http://aehmlo.com">Aehmlo Lxaitn</a>, inspired by <a href="http://adam.hbang.ws">Adam</a>. Domain courtesy of <a href="http://haifisch.ninja">Haifisch</a>.<br />Styling inspired by Apple's awesome pre-release library.<br />Thanks to <a href="http://insanj.com">insanj</a> for trying to help!</footer>
 	</body>
 </html>
