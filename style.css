@@ -70,7 +70,7 @@ div.content-block{
 }
 @media only screen and (max-width: 700px){
 	div.content-block{
-		width: 100%;
+		width: calc(100% - 15px);
 	}
 }
 body.objc code.objc, body.swift code.swift, body.both code{
